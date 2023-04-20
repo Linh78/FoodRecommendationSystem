@@ -1,8 +1,10 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>@ViewData["Title"] - RecommendFood</title>
     <!-- Favicon -->
     <link rel="icon" href="/Page/img/core-img/favicon.ico">
@@ -71,7 +73,7 @@
                 <!-- Logo Area Start -->
                 <div class="col-12">
                     <div class="logo_area text-center">
-                        <a href="index.html" class="yummy-logo">Yummy Baby</a>
+                        <a href="Index" class="yummy-logo">Yummy Baby</a>
                     </div>
                 </div>
             </div>
@@ -84,7 +86,7 @@
                         <div class="collapse navbar-collapse justify-content-center" id="yummyfood-nav">
                             <ul class="navbar-nav" id="yummy-nav">
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="index.html">Introduce<span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" asp-controller="Introduce" asp-action="Index">Introduce<span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Recommend Meal</a>
@@ -97,7 +99,7 @@
                                     </div>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Tips & Tricks</a>
+                                    <a class="nav-link" asp-controller="Introduce" asp-action="TipsTrick">Tips & Tricks</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="contact.html">Contact</a>
@@ -111,11 +113,12 @@
     </header>
     <!-- ****** Header Area End ****** -->
 
-    <div class="container">
+    @*<div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
-    </div>
+    </div>*@
+    @RenderBody()
 
     <!-- ****** Footer Menu Area Start ****** -->
     <footer class="footer_area">
