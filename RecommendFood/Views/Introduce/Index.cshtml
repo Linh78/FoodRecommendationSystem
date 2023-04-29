@@ -9,25 +9,25 @@
 </head>
 <body>
     <!-- ****** Welcome Post Area Start ****** -->
-    @*<section class="welcome-post-sliders owl-carousel">
+    <section class="welcome-post-sliders owl-carousel">
         @foreach(var item in Model)
         {
             <div class="welcome-single-slide">
                 <!-- Post Thumb -->
-                <img src=@item.Thumbnail alt="">
+                <img width="500" height="702" src=@item.Thumbnail alt="">
                 <!-- Overlay Text -->
                 <div class="project_title">
                     <div class="post-date-commnents d-flex">
-                        <a href="#">May 19, 2017</a>
-                        <a href="#">5 Comment</a>
+                        <a href="#">@item.CreateAt.ToString("dddd, dd MMMM yyyy")</a>
+                        @*<a href="#">5 Comment</a>*@
                     </div>
-                    <a href="#">
-                        <h5>Post 1</h5>
+                    <a asp-action="Details" asp-route-id=@item.Id>
+                        <h5>@item.Title</h5>
                     </a>
                 </div>
             </div>
         }
-    </section>*@
+    </section>
     <!-- ****** Welcome Area End ****** -->
     <!-- ****** Categories Area Start ****** -->
     <section class="categories_area clearfix" id="about">

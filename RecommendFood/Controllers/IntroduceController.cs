@@ -10,7 +10,7 @@ namespace RecommendFood.Controllers
         public IActionResult Index()
         {
             List<News> news = new List<News>();
-            news = dBContext.News.ToList();
+            news = dBContext.News.Take(5).ToList();
             List<News> newsRandom = new List<News>();
             newsRandom = dBContext.News.OrderBy(x => Guid.NewGuid()).Take(4).ToList();
             ViewBag.newsRandom = newsRandom;

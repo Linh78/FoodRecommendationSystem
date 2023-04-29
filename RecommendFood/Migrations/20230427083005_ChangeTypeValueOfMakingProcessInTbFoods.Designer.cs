@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RecommendFood.Models.Entity;
 
@@ -11,9 +12,11 @@ using RecommendFood.Models.Entity;
 namespace RecommendFood.Migrations
 {
     [DbContext(typeof(FoodDBContext))]
-    partial class FoodDBContextModelSnapshot : ModelSnapshot
+    [Migration("20230427083005_ChangeTypeValueOfMakingProcessInTbFoods")]
+    partial class ChangeTypeValueOfMakingProcessInTbFoods
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -102,12 +105,6 @@ namespace RecommendFood.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<float>("Fat")
-                        .HasColumnType("real");
-
-                    b.Property<float>("Glucin")
-                        .HasColumnType("real");
-
                     b.Property<int>("Id_BabyAge")
                         .HasColumnType("int");
 
@@ -116,15 +113,12 @@ namespace RecommendFood.Migrations
 
                     b.Property<string>("MakingProcess")
                         .IsRequired()
-                        .HasColumnType("Nvarchar(max)")
+                        .HasColumnType("Text")
                         .HasColumnName("MakingProcess");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<float>("Protein")
-                        .HasColumnType("real");
 
                     b.Property<double>("Quantity")
                         .HasColumnType("float");
@@ -154,13 +148,18 @@ namespace RecommendFood.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Img")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<float>("Fat")
+                        .HasColumnType("real");
+
+                    b.Property<float>("Glucin")
+                        .HasColumnType("real");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("Protein")
+                        .HasColumnType("real");
 
                     b.HasKey("Id");
 
@@ -204,6 +203,31 @@ namespace RecommendFood.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("News");
+                });
+
+            modelBuilder.Entity("RecommendFood.Models.Entity.Nutrients_Food", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<float>("Fat")
+                        .HasColumnType("real");
+
+                    b.Property<float>("Glucin")
+                        .HasColumnType("real");
+
+                    b.Property<int>("Id_Food")
+                        .HasColumnType("int");
+
+                    b.Property<float>("Protein")
+                        .HasColumnType("real");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Nutrients_Food");
                 });
 
             modelBuilder.Entity("RecommendFood.Models.Entity.Food_Ingredients", b =>
