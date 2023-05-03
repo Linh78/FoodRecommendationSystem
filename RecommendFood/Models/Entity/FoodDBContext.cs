@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
+using RecommendFood.Models.Dto;
 namespace RecommendFood.Models.Entity
 {
     public class FoodDBContext: DbContext
@@ -53,5 +54,7 @@ namespace RecommendFood.Models.Entity
                 .HasForeignKey(d => d.Id_BabyAge)
                 .HasConstraintName("FK_Foods_BabyAge");
         }
+
+        public DbSet<RecommendFood.Models.Dto.FoodDetail> FoodDetail { get; set; } = default!;
     }
 }

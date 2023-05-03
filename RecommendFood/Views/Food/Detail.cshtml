@@ -1,0 +1,101 @@
+﻿@model RecommendFood.Models.Dto.FoodDetail
+
+@{
+    ViewData["Title"] = "Detail";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+<div class="container">
+    <h1>Cách làm</h1>
+    <div>
+        <h4>@Html.DisplayFor(model => model.Name)</h4>
+        <hr />
+        <div class="row">
+            <dl class="col-md-6">
+                <div class="row">
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.Name)
+                    </dt>
+                    <dd class="col-md-8">
+                        @Html.DisplayFor(model=>model.Name)
+                    </dd>
+                </div>
+                <div class="row">
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.Quantity)
+                    </dt>
+                    <dd class="col-md-8">
+                        @Html.DisplayFor(model=>model.Quantity) @Html.DisplayFor(model=>model.Unit)
+                    </dd>
+                </div>
+                <div class="row">
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Category)
+                    </dt>
+                    <dd class="col-md-4">
+                        @Html.DisplayFor(model=>model.Category)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.BabyAge)
+                    </dt>
+                    <dd class="col-md-4">
+                        @Html.DisplayFor(model=>model.BabyAge)
+                    </dd>
+                </div>
+                <div class="row">
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Protein)
+                    </dt>
+                    <dd class="col-md-2">
+                        @Html.DisplayFor(model=>model.Protein)g
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Fat)
+                    </dt>
+                    <dd class="col-md-2">
+                        @Html.DisplayFor(model=>model.Fat)g
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Glucin)
+                    </dt>
+                    <dd class="col-md-2">
+                        @Html.DisplayFor(model=>model.Glucin)g
+                    </dd>
+                </div>
+                <div class="row">
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.Energy)
+                    </dt>
+                    <dd class="col-md-8">
+                        @Html.DisplayFor(model=>model.Energy)
+                    </dd>
+                </div>
+            </dl>
+            <div class="col-sm-6">
+                <img src="@Model.Thumbnail" @*width="300" height="300" *@/>
+            </div>
+        </div>
+        <hr />
+        <h4>
+            Nguyên liệu
+        </h4>
+        <div>
+            @Html.Raw(Model.Recipe)
+        </div>
+        <hr />
+        <h4>
+            Hướng dẫn nấu nướng
+        </h4>
+        <div>
+            @Html.Raw(Model.MakingProcess)
+        </div>
+    </div>
+    <div>
+        <a asp-action="Loc">Quay lại</a>
+    </div>
+</div>
+</body>
+</html>

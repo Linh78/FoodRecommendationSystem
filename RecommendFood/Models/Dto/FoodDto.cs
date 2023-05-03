@@ -13,5 +13,6 @@ namespace RecommendFood.Models.Dto
         public string Category { get; set; }
         public string BabyAge { get; set; }
         public string Thumbnail { get; set; }
+        public float Energy { get; set; }
     }
 }

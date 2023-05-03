@@ -1,0 +1,144 @@
+﻿@model List<RecommendFood.Models.Dto.FoodDto>
+@{
+    ViewBag.Title = "Món ăn";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="shortcut icon" href="/Food/images/favicon.png" type="">
+
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="/Food/css/bootstrap.css" />
+
+    <!--owl slider stylesheet -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <!-- nice select  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />
+    <!-- font awesome style -->
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="/Food/css/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="/Food/css/responsive.css" rel="stylesheet" />
+
+</head>
+
+<body class="sub_page">
+    <div class="breadcumb-area" style="background-image: url(/Page/img/bg-img/bg-pattern.jpg);">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="bradcumb-title text-center">
+                        <h2>Our Menu</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- food section -->
+    @*<form action="/Food/GetByCategory" method="post">
+    <input name="categoryId" id="input" hidden />
+    <script type="text/javascript">
+    var MainMeal = document.getElementById('MainMeal')
+    var SnackMeal = document.getElementById('SnackMeal')
+    var Smoothies = document.getElementById('Smoothies')
+    MainMeal.onclick = function(){
+    document.getElementById('input').ariaValueText = "4"
+    }
+    SnackMeal.onclick = function () {
+    document.getElementById('input').ariaValueText = "5"
+    }
+    Smoothies.onclick = function () {
+    document.getElementById('input').ariaValueText = "6"
+    }
+    </script>
+    </form>*@
+@*@using()*@
+    <section class="food_section layout_padding">
+        <div class="container">
+            <ul class="filters_menu">
+                <li class="active"><a asp-action="Loc" asp-route-id="null">All</a></li>
+                <li><a asp-action="Loc" asp-route-id="4">Main Meal</a></li>
+                <li><a asp-action="Loc" asp-route-id="5">Snack Meal</a></li>
+                <li><a asp-action="Loc" asp-route-id="6">Smoothies</a></li>
+            </ul>
+
+            <div class="filters-content">
+                <div class="row grid">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-sm-6 col-lg-4 all burger">
+                            <div class="box">
+                                <div>
+                                    <div class="img-box">
+                                        <img src=@item.Thumbnail alt="">
+                                    </div>
+                                    <div class="detail-box">
+                                        <h5 style="color: white">
+                                            @item.Name
+                                        </h5>
+                                        <div style="color: wheat; font-size:0.8em; opacity: 0.7" class="opt">
+                                            <div> Định lượng: @item.Quantity @item.Unit</div>
+                                            <div> Nhóm tuổi: @item.BabyAge.ToString()</div>
+                                            <div>@item.Category</div>
+                                        </div>
+                                        <div class="options">
+                                            <h6 style="color:white">
+                                                @item.Energy Kcal
+                                            </h6>
+                                            <a asp-action="Detail" asp-route-id="@item.Id" style="font-size: 0.8em; color: white">
+                                                More
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="btn-box">
+                <a href="">
+                    View More
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- end food section -->
+    <!-- footer section -->
+    <!-- jQery -->
+    <script src="/Food/js/jquery-3.4.1.min.js"></script>
+    <!-- popper js -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <!-- bootstrap js -->
+    <script src="/Food/js/bootstrap.js"></script>
+    <!-- owl slider -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+    </script>
+    <!-- isotope js -->
+    <script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
+    <!-- nice select -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+    <!-- custom js -->
+    <script src="/Food/js/custom.js"></script>
+    <!-- Google Map -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
+    </script>
+    <!-- End Google Map -->
+</body>
+
+</html>
