@@ -12,6 +12,25 @@ namespace RecommendFood.Controllers
         {
             return View();
         }
+        public ActionResult Recommend()
+        {
+            List<FoodDto> listFood = new List<FoodDto>();
+            listFood = (from foods in db.Foods
+                        select new FoodDto
+                        {
+                            Id = foods.Id,
+                            Name = foods.Name,
+                            MakingProcess = foods.MakingProcess,
+                            Thumbnail = foods.Thumbnail,
+                            Quantity = foods.Quantity,
+                            Unit = foods.Unit,
+                            Category = foods.Categorie.Name,
+                            BabyAge = foods.BabyAge.AgeGroup,
+                            Energy = foods.Glucin * 4 + foods.Fat * 9 + foods.Protein
+
+                        }).ToList();
+            return View(listFood);
+        }
         
     }
 }

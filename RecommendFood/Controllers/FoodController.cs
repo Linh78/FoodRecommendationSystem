@@ -29,14 +29,6 @@ namespace RecommendFood.Controllers
                                 Unit = foods.Unit,
                                 Category = foods.Categorie.Name,
                                 BabyAge = foods.BabyAge.AgeGroup,
-                                //Category = (from f in db.Foods
-                                //            join c in db.Categories
-                                //            on f.Id_Category equals c.Id
-                                //            select c.Name).FirstOrDefault(),
-                                //BabyAge = (from f in db.Foods
-                                //           join b in db.BabyAges
-                                //           on f.Id_BabyAge equals b.Id
-                                //           select b.AgeGroup).FirstOrDefault(),
                                 Energy = foods.Glucin * 4 + foods.Fat * 9 + foods.Protein
 
                             }).ToList();

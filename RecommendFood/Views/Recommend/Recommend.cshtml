@@ -36,12 +36,12 @@
 </head>
 
 <body class="sub_page">
-    <div class="breadcumb-area" style="background-image: url(/Page/img/bg-img/bg-pattern.jpg);">
+    <div class="breadcumb-area" style="background-image: url(/Page/img/bg-img/breadcumb.jpg);">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="bradcumb-title text-center">
-                        <h2>Our Menu</h2>
+                        <h2>Meal Recommendation</h2>
                     </div>
                 </div>
             </div>
@@ -54,41 +54,16 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/Introduce/Index"><i class="fa fa-home" aria-hidden="true"></i> Introduce</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Foods</li>
+                            <li class="breadcrumb-item active" aria-current="page">Recommend Meal</li>
                         </ol>
                     </nav>
                 </div>
             </div>
         </div>
     </div>
-    <!-- food section -->
-    @*<form action="/Food/GetByCategory" method="post">
-    <input name="categoryId" id="input" hidden />
-    <script type="text/javascript">
-    var MainMeal = document.getElementById('MainMeal')
-    var SnackMeal = document.getElementById('SnackMeal')
-    var Smoothies = document.getElementById('Smoothies')
-    MainMeal.onclick = function(){
-    document.getElementById('input').ariaValueText = "4"
-    }
-    SnackMeal.onclick = function () {
-    document.getElementById('input').ariaValueText = "5"
-    }
-    Smoothies.onclick = function () {
-    document.getElementById('input').ariaValueText = "6"
-    }
-    </script>
-    </form>*@
-@*@using()*@
     <section class="food_section">
         <div class="container">
-            <ul class="filters_menu">
-                <li class="active"><a asp-action="Loc" asp-route-id="null">All</a></li>
-                <li><a asp-action="Loc" asp-route-id="4">Main Meal</a></li>
-                <li><a asp-action="Loc" asp-route-id="5">Snack Meal</a></li>
-                <li><a asp-action="Loc" asp-route-id="6">Smoothies</a></li>
-            </ul>
-
+            
             <div class="filters-content">
                 <div class="row grid">
                     @foreach (var item in Model)
@@ -156,3 +131,73 @@
 </body>
 
 </html>
+
+@*
+@{
+    ViewBag.Title = "Recommend Meal";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css"/>
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+</head>
+<body>
+    <py-config>
+        packages = ["numpy", "pandas"]
+    </py-config>
+    <py-script output="result">
+
+    #import libraries
+    import numpy as np
+    import pandas as pd
+
+    #data
+    mtx =   [[15, 4,5]
+    ,[9,5,6]
+    ,[10,3,7]
+    ,[8,5,6]
+    ,[8,7,5]
+    ,[6,4,5]
+    ,[11,3,6]
+    ,[5,4,2]
+    ,[12,3,0]]
+
+    #weight
+    w = [0.68,0.17,0.1667]
+
+    #Altenative names
+    Names = ['1', '2', '3', '4', '5', '6','7','8','9']
+
+    #Create dataframe
+    Data = pd.DataFrame(mtx, index = Names)
+    Data
+
+    #Step 1 - Normalization
+    Data_norm = Data/np.sqrt(np.power(Data,2).sum(axis=0))
+    Data_norm
+
+    #Step 2 - Weighted normalized ratings
+    Data_norm_w = Data_norm*w
+    Data_norm_w
+
+    #Step 3 - Identifying positive and negative ideals
+    positive_ideal = Data_norm_w.max()
+    negative_ideal = Data_norm_w.min()
+
+    #Step 4 - Seperation Measurements:
+    #Positive Ideal
+    SM_P = np.sqrt(np.power(Data_norm_w-positive_ideal,2).sum(axis=1))
+    #Negative Ideal
+    SM_N = np.sqrt(np.power(Data_norm_w-negative_ideal,2).sum(axis=1))
+
+    #step 5
+    Topis_score = SM_N/(SM_N + SM_P)
+    Topis_score
+
+    rank = Topis_score.rank(method='max', ascending=False)
+    rank.astype(int)
+    print(rank.astype(int))
+    </py-script>
+</body>
+</html>*@

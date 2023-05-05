@@ -3,7 +3,60 @@
 }
 <!DOCTYPE html>
 <html>
-    <head>
-
-    </head>
+<head>
+    
+</head>
+<body>
+    <div class="breadcumb-area" style="background-image: url(/Page/img/bg-img/breadcumb.jpg);">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="bradcumb-title text-center">
+                        <h2>Meal Recommendation</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="breadcumb-nav">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/Introduce/Index"><i class="fa fa-home" aria-hidden="true"></i> Introduce</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Recommend Meal</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <form action="/Recommend/Recommend" method="post">
+            <div class="form-row">
+              <label for="validationDefault01">Your baby's name</label>
+              <input type="text" class="form-control" id="validationDefault01" required>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6">
+                    <label for="DOB">Date of birth</label>
+                    <input type="date" class="form-control" required/>
+                </div>
+                <div class="col-md-6">
+                    <div class="row-2">
+                        <label for="Gender" >Gender</label>
+                    </div>
+                    <div class="row-2">
+                        <input type="radio" name="gender" checked="checked"/> Male
+                        <input type="radio" name="gender"/> Female
+                    </div>
+                </div>
+            </div>
+            <br />
+          <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+    </div>
+    
+</body>
 </html>
