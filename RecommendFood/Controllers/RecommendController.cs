@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RecommendFood.Models.Dto;
 using RecommendFood.Models.Entity;
-
+using RecommendFood.RecommendSystem;
 
 namespace RecommendFood.Controllers
 {
@@ -14,6 +14,8 @@ namespace RecommendFood.Controllers
         }
         public ActionResult Recommend()
         {
+            Recommend recommend = new Recommend();
+            
             List<FoodDto> listFood = new List<FoodDto>();
             listFood = (from foods in db.Foods
                         select new FoodDto
