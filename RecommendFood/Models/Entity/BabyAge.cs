@@ -14,6 +14,9 @@ namespace RecommendFood.Models.Entity
         public int AmountOfMainMeal { get; set; }
         public int AmountOfSnackMeal { get; set; }
         public virtual ICollection<Foods> Foods { get; set; }
+        public float WeightP { get; set; }
+        public float WeightF { get; set;}
+        public float WeightG { get; set; }
 
     }
 }

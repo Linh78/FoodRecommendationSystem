@@ -29,7 +29,7 @@ namespace RecommendFood.Controllers
                                 Unit = foods.Unit,
                                 Category = foods.Categorie.Name,
                                 BabyAge = foods.BabyAge.AgeGroup,
-                                Energy = foods.Glucin * 4 + foods.Fat * 9 + foods.Protein
+                                Energy = foods.Glucin * 4 + foods.Fat * 9 + foods.Protein*4
 
                             }).ToList();
                 return View(listFood);

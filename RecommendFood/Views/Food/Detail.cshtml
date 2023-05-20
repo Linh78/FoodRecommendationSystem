@@ -8,10 +8,40 @@
 <head>
 </head>
 <body>
-<div class="container">
+    <div class="sub_page">
+        <div class="breadcumb-area" style="background-image: url(/Page/img/bg-img/bg-pattern.jpg);">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12">
+                        <div class="bradcumb-title text-center">
+                            <h2>Our Menu</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="breadcumb-nav">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/Introduce/Index"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a></li>
+                                <li class="breadcrumb-item " aria-current="page">Món ăn</li>
+                                <li class="breadcrumb-item active" aria-current="page">Chi tiết</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <section class="food_section section_padding_30_80">
+        <div class="container">
+        <br />
+
     <h1>Cách làm</h1>
     <div>
-        <h4>@Html.DisplayFor(model => model.Name)</h4>
+        <h3>@Html.DisplayFor(model => model.Name)</h3>
         <hr />
         <div class="row">
             <dl class="col-md-6">
@@ -32,36 +62,60 @@
                     </dd>
                 </div>
                 <div class="row">
-                    <dt class="col-sm-2">
+                    <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.Category)
+                    </dt>
+                    <dd class="col-md-8">
+                        @Html.DisplayFor(model=>model.Category) 
+                    </dd>
+                </div>
+                <div class="row">
+                    @*<dt class="col-sm-2">
                         @Html.DisplayNameFor(model => model.Category)
                     </dt>
                     <dd class="col-md-4">
                         @Html.DisplayFor(model=>model.Category)
-                    </dd>
-                    <dt class="col-sm-2">
+                    </dd>*@
+                    <dt class="col-sm-4">
                         @Html.DisplayNameFor(model => model.BabyAge)
                     </dt>
-                    <dd class="col-md-4">
+                    <dd class="col-md-8">
                         @Html.DisplayFor(model=>model.BabyAge)
                     </dd>
                 </div>
                 <div class="row">
-                    <dt class="col-sm-2">
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.Protein)
+                    </dt    >
+                        <dd class="col-md-8">
+                            @Html.DisplayFor(model=>model.Protein)g
+                        </dd    >
+                </div>
+                <div class="row">
+                            <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.Fat)
+                    </dt    >
+                            <dd class="col-md-8">
+                            @Html.DisplayFor(model=>model.Fat)g
+                        </dd    >
+                </div>
+                <div class="row">
+                    @*<dt class="col-sm-2">
                         @Html.DisplayNameFor(model => model.Protein)
                     </dt>
                     <dd class="col-md-2">
                         @Html.DisplayFor(model=>model.Protein)g
-                    </dd>
-                    <dt class="col-sm-2">
+                    </dd>*@
+                    @*<dt class="col-sm-2">
                         @Html.DisplayNameFor(model => model.Fat)
                     </dt>
                     <dd class="col-md-2">
                         @Html.DisplayFor(model=>model.Fat)g
-                    </dd>
-                    <dt class="col-sm-2">
+                    </dd>*@
+                    <dt class="col-sm-4">
                         @Html.DisplayNameFor(model => model.Glucin)
                     </dt>
-                    <dd class="col-md-2">
+                    <dd class="col-md-8">
                         @Html.DisplayFor(model=>model.Glucin)g
                     </dd>
                 </div>
@@ -74,7 +128,7 @@
                     </dd>
                 </div>
             </dl>
-            <div class="col-sm-6">
+                <div class="col-sm-6" style="display: flex;justify-content: center">
                 <img src="@Model.Thumbnail" @*width="300" height="300" *@/>
             </div>
         </div>
@@ -96,6 +150,8 @@
     <div>
         <a asp-action="Loc">Quay lại</a>
     </div>
+        </div>
+    </section>
 </div>
 </body>
 </html>

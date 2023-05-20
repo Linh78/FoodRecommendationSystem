@@ -1,4 +1,5 @@
-﻿@{
+﻿@model RecommendFood.Models.Entity.BabyAge
+@{
     ViewBag.Title = "Gợi ý";
 }
 <!DOCTYPE html>
@@ -33,29 +34,32 @@
         </div>
     </div>
     <div class="container">
-        <form action="/Recommend/Recommend" method="post">
+        @using (Html.BeginForm("Recommend", "Recommend", FormMethod.Post))
+        {
+        //<form action="/Recommend/Recommend" method="post">
             <div class="form-row">
-              <label for="validationDefault01">Your baby's name</label>
-              <input type="text" class="form-control" id="validationDefault01" required>
+              <label for="validationDefault01">Tên của bé</label>
+              <input type="text" name="Name" class="form-control" id="validationDefault01" required>
             </div>
             <div class="form-row">
                 <div class="col-md-6">
-                    <label for="DOB">Date of birth</label>
-                    <input type="date" class="form-control" required/>
+                    <label for="AgeGroup">Nhóm tuổi</label>
+                    <select asp-for="Id" name="AgeGroup" class="form-control" asp-items="ViewBag.AgeGroup" ></select>
                 </div>
                 <div class="col-md-6">
                     <div class="row-2">
-                        <label for="Gender" >Gender</label>
+                        <label for="Gender" >Giới tính</label>
                     </div>
                     <div class="row-2">
-                        <input type="radio" name="gender" checked="checked"/> Male
-                        <input type="radio" name="gender"/> Female
+                        <input type="radio" value="male" name="gender" checked="checked"/> Nam
+                        <input type="radio" value="female" name="gender"/> Nữ
                     </div>
                 </div>
             </div>
             <br />
-          <button class="btn btn-primary" type="submit">Submit</button>
-        </form>
+          <button class="btn btn-primary" type="submit">Gợi ý</button>
+        //</form>
+        }
     </div>
     
 </body>

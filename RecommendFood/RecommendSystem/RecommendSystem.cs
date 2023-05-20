@@ -11,10 +11,10 @@ namespace RecommendFood.RecommendSystem
             psi.FileName = @"C:\Users\Linh\Anaconda3\python.exe";
 
             //2) Provide script and arguments
-            rc.script = @"topsis.py";
+            rc.script = @"C:\Users\Linh\Desktop\RecommendFood\RecommendFood\RecommendSystem\topsis.py";
             //var inputFile = @"C:\Users\Linh\Desktop\ConsoleApp1\ConsoleApp2\data.csv";
             //var weight = "0.68,0.17,0.1667";
-            //var impact = "+,+,+";
+            rc.impact = "+,+,+";
             //var resultFile = @"C:\Users\Linh\Desktop\ConsoleApp1\ConsoleApp2\result.csv";
 
             // psi.Arguments = $"\"{script}\"\"{start}\"\"{end}\"";
@@ -42,5 +42,19 @@ namespace RecommendFood.RecommendSystem
             Console.WriteLine(result);
             Console.WriteLine();
         }
+        /// <summary>
+        /// Tính trọng số cho từng bữa
+        /// </summary>
+        /// <param name="AgeGroup">mã nhóm tuổi</param>
+        /// <param name="mealID">mã bữa</param>
+        /// <returns></returns>
+        //public string Weights(int AgeGroup, int mealID)
+        //{
+
+        //    float weightP;
+        //    float weightF;
+        //    float weightG;
+
+        //}
     }
 }

@@ -41,7 +41,7 @@
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="bradcumb-title text-center">
-                        <h2>Meal Recommendation</h2>
+                        <h2>Đề xuất món ăn</h2>
                     </div>
                 </div>
             </div>
@@ -53,17 +53,21 @@
                 <div class="col-12">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/Introduce/Index"><i class="fa fa-home" aria-hidden="true"></i> Introduce</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Recommend Meal</li>
+                            <li class="breadcrumb-item"><a href="/Introduce/Index"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Đề xuất món</li>
                         </ol>
                     </nav>
                 </div>
             </div>
         </div>
     </div>
-    <section class="food_section">
+    <section class="food_section section_padding_80">
         <div class="container">
-            
+            <div class="infor">
+                <p>
+                    Bé @ViewBag.Name 
+                </p>
+            </div>
             <div class="filters-content">
                 <div class="row grid">
                     @foreach (var item in Model)
@@ -87,7 +91,7 @@
                                             <h6 style="color:white">
                                                 @item.Energy Kcal
                                             </h6>
-                                            <a asp-action="Detail" asp-route-id="@item.Id" style="font-size: 0.8em; color: white">
+                                            <a asp-action="Detail" asp-controller="Food" asp-route-id="@item.Id" style="font-size: 0.8em; color: white">
                                                 More
                                             </a>
                                         </div>
@@ -102,6 +106,9 @@
                 <a href="">
                     View More
                 </a>
+            </div>
+            <div>
+                <h1>@ViewBag.BirthDay</h1>
             </div>
         </div>
     </section>
