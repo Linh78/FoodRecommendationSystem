@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RecommendFood.Models.Entity;
 
@@ -11,9 +12,11 @@ using RecommendFood.Models.Entity;
 namespace RecommendFood.Migrations
 {
     [DbContext(typeof(FoodDBContext))]
-    partial class FoodDBContextModelSnapshot : ModelSnapshot
+    [Migration("20230523174243_CreateTbComment")]
+    partial class CreateTbComment
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -363,7 +366,7 @@ namespace RecommendFood.Migrations
                     b.Property<DateTime>("CreatAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Id_Food")
+                    b.Property<int>("Id_New")
                         .HasColumnType("int");
 
                     b.Property<string>("Id_User")
@@ -375,7 +378,7 @@ namespace RecommendFood.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Id_Food");
+                    b.HasIndex("Id_New");
 
                     b.HasIndex("Id_User");
 
@@ -580,12 +583,12 @@ namespace RecommendFood.Migrations
 
             modelBuilder.Entity("RecommendFood.Models.Entity.Comment", b =>
                 {
-                    b.HasOne("RecommendFood.Models.Entity.Foods", "Foods")
+                    b.HasOne("RecommendFood.Models.Entity.News", "News")
                         .WithMany("Comments")
-                        .HasForeignKey("Id_Food")
+                        .HasForeignKey("Id_New")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("FK_Comment_Foods");
+                        .HasConstraintName("FK_Comment_news");
 
                     b.HasOne("RecommendFood.Models.Entity.User", "User")
                         .WithMany("Comments")
@@ -594,7 +597,7 @@ namespace RecommendFood.Migrations
                         .IsRequired()
                         .HasConstraintName("FK_Comment_User");
 
-                    b.Navigation("Foods");
+                    b.Navigation("News");
 
                     b.Navigation("User");
                 });
@@ -651,14 +654,17 @@ namespace RecommendFood.Migrations
 
             modelBuilder.Entity("RecommendFood.Models.Entity.Foods", b =>
                 {
-                    b.Navigation("Comments");
-
                     b.Navigation("Food_Ingredients");
                 });
 
             modelBuilder.Entity("RecommendFood.Models.Entity.Ingredient", b =>
                 {
                     b.Navigation("Food_Ingredients");
+                });
+
+            modelBuilder.Entity("RecommendFood.Models.Entity.News", b =>
+                {
+                    b.Navigation("Comments");
                 });
 
             modelBuilder.Entity("RecommendFood.Models.Entity.User", b =>

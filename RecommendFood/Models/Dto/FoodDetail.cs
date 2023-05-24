@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using RecommendFood.Models.Entity;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RecommendFood.Models.Dto
@@ -19,5 +20,6 @@ namespace RecommendFood.Models.Dto
         public float Fat { get; set; }
         public float Glucin { get; set; }
         public float Energy { get; set; }
+       // public List<Comment> Comments { get; set; }
     }
 }

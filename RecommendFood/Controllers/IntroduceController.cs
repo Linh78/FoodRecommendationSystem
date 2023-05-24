@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RecommendFood.Models.Dto;
 using RecommendFood.Models.Entity;
 
 namespace RecommendFood.Controllers
@@ -41,6 +42,30 @@ namespace RecommendFood.Controllers
             List<News> news = new List<News>();
             news = dBContext.News.ToList();
             return View(news);
+        }
+
+        [HttpPost]
+        public IActionResult Search(string search) 
+        { 
+            ViewBag.search = search;
+            search = search.ToLower();
+            //List<Foods> foodSearch = dBContext.Foods.Where(x=>x.Name.ToLower().Contains(search)).ToList();
+            List<FoodDto> foodDtos = (from foods in dBContext.Foods
+                                      where foods.Name.ToLower().Contains(search)
+                                      select new FoodDto
+                                      {
+                                          Id = foods.Id,
+                                          Name = foods.Name,
+                                          MakingProcess = foods.MakingProcess,
+                                          Thumbnail = foods.Thumbnail,
+                                          Quantity = foods.Quantity,
+                                          Unit = foods.Unit,
+                                          Category = foods.Categorie.Name,
+                                          BabyAge = foods.BabyAge.AgeGroup,
+                                          Energy = foods.Glucin * 4 + foods.Fat * 9 + foods.Protein
+
+                                      }).ToList();
+            return View(foodDtos); 
         }
     }
 }

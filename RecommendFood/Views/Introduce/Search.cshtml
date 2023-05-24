@@ -1,11 +1,9 @@
 ﻿@model List<RecommendFood.Models.Dto.FoodDto>
 @{
-    ViewBag.Title = "Món ăn";
+    ViewBag.Title = "Tìm kiếm";
 }
-
 <!DOCTYPE html>
 <html>
-
 <head>
     <!-- Basic -->
     <meta charset="utf-8" />
@@ -32,63 +30,25 @@
     <link href="/Food/css/style.css" rel="stylesheet" />
     <!-- responsive style -->
     <link href="/Food/css/responsive.css" rel="stylesheet" />
-
 </head>
-
-<body class="sub_page">
-    <div class="breadcumb-area" style="background-image: url(/Page/img/bg-img/bg-pattern.jpg);">
+<body>
+    <div class="breadcumb-area" style="background-image: url(/Page/img/bg-img/breadcumb.jpg);">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="bradcumb-title text-center">
-                        <h2>Danh sách món ăn</h2>
+                        <h2>Kết quả tìm kiếm</h2>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="breadcumb-nav">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/Introduce/Index"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Món ăn</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- food section -->
-    @*<form action="/Food/GetByCategory" method="post">
-    <input name="categoryId" id="input" hidden />
-    <script type="text/javascript">
-    var MainMeal = document.getElementById('MainMeal')
-    var SnackMeal = document.getElementById('SnackMeal')
-    var Smoothies = document.getElementById('Smoothies')
-    MainMeal.onclick = function(){
-    document.getElementById('input').ariaValueText = "4"
-    }
-    SnackMeal.onclick = function () {
-    document.getElementById('input').ariaValueText = "5"
-    }
-    Smoothies.onclick = function () {
-    document.getElementById('input').ariaValueText = "6"
-    }
-    </script>
-    </form>*@
-@*@using()*@
     <section class="food_section">
-        <div class="container">
-            <ul class="filters_menu">
-                <li class="active"><a asp-action="Loc" asp-route-id="null">Tất cả</a></li>
-                <li><a asp-action="Loc" asp-route-id="4">Món chính</a></li>
-                <li><a asp-action="Loc" asp-route-id="5">Món phụ</a></li>
-                <li><a asp-action="Loc" asp-route-id="6">Smoothies</a></li>
-            </ul>
+    <div class="container" style="margin-top:80px">
+        <h3>Kết quả tìm kiếm "@ViewBag.search"</h3>
 
+        @if (Model != null && Model.Count > 0)
+        {
             <div class="filters-content">
                 <div class="row grid">
                     @foreach (var item in Model)
@@ -112,7 +72,7 @@
                                             <h6 style="color:white">
                                                 @item.Energy Kcal
                                             </h6>
-                                            <a asp-action="Detail" asp-route-id="@item.Id" style="font-size: 0.8em; color: white">
+                                            <a asp-action="Detail" asp-controller="Food" asp-route-id="@item.Id" style="font-size: 0.8em; color: white">
                                                 Tiếp
                                             </a>
                                         </div>
@@ -123,14 +83,13 @@
                     }
                 </div>
             </div>
-            @*<div class="btn-box">
-                <a href="">
-                    View More
-                </a>
-            </div>*@
-        </div>
+        }
+        else
+        {
+            <p>Không tìm thấy </p>
+        }
+    </div>
     </section>
-
     <!-- end food section -->
     <!-- footer section -->
     <!-- jQery -->
@@ -154,5 +113,4 @@
     </script>
     <!-- End Google Map -->
 </body>
-
 </html>

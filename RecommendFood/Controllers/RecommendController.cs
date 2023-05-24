@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using RecommendFood.Models.Dto;
 using RecommendFood.Models.Entity;
 using RecommendFood.RecommendSystem;
+using System.Linq;
 
 namespace RecommendFood.Controllers
 {
@@ -48,8 +49,9 @@ namespace RecommendFood.Controllers
             //đọc file
             FileHelperEngine engineResult = new FileHelperEngine(typeof(FoodsResult));
             FoodsResult[] result = (FoodsResult[])engineResult.ReadFile(recommend.outputFile);
+            result = result.OrderByDescending(x => x.Rank).ToArray();
             List<FoodDto> listFood = new List<FoodDto>();
-            for(int i = 0; i < result.Length; i++)
+            for(int i = result.Length-1; i >=0; i--)
             {
                 listFood.Add((FoodDto)(from foods in db.Foods
                             where foods.Id == result[i].Id

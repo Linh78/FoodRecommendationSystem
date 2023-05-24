@@ -16,6 +16,5 @@ namespace RecommendFood.Models.Entity
         public DateTime UpdateAt { get; set; } = DateTime.Now;
         public string ShortContent { get; set; }
 
-
     }
 }

@@ -31,37 +31,46 @@
                 <div class="col-5 col-sm-6">
                     <!--  Top Social bar start -->
                     <div class="top_social_bar">
-                        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        @*<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                         <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                         <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a>*@
+                         <partial name="_LoginPartial" />
+
                     </div>
+
+
                 </div>
                 <!--  Login Register Area -->
                 <div class="col-7 col-sm-6">
                     <div class="signup-search-area d-flex align-items-center justify-content-end">
-                        <div class="login_register_area d-flex">
+                        @*<div class="login_register_area d-flex">
                             <div class="login">
                                 <a href="register.html">Login</a>
                             </div>
                             <div class="register">
                                 <a href="register.html">Sign up</a>
                             </div>
-                        </div>
+
+                        </div>*@
+
                         <!-- Search Button Area -->
                         <div class="search_button">
                             <a class="searchBtn" href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
                         </div>
                         <!-- Search Form -->
                         <div class="search-hidden-form">
-                            <form action="#" method="get">
-                                <input type="search" name="search" id="search-anything" placeholder="Search Anything...">
+                            <form asp-action="Search" asp-controller="Introduce" method="post">
+                                <input type="search" name="search" id="search-anything" placeholder="Tìm kiếm...">
                                 <input type="submit" value="" class="d-none">
                                 <span class="searchBtn"><i class="fa fa-times" aria-hidden="true"></i></span>
                             </form>
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
         </div>
     </div>
@@ -86,28 +95,28 @@
                         <div class="collapse navbar-collapse justify-content-center" id="yummyfood-nav">
                             <ul class="navbar-nav" id="yummy-nav">
                                 <li class="nav-item active">
-                                    <a class="nav-link" asp-controller="Introduce" asp-action="Index">Introduce<span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" asp-controller="Introduce" asp-action="Index">Trang chủ<span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-action="Index" asp-controller="Recommend">Recommend Meal</a>
+                                    <a class="nav-link" asp-action="Index" asp-controller="Recommend">Gợi ý món</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-controller="Food" asp-action="Loc">Foods</a>
+                                    <a class="nav-link" asp-controller="Food" asp-action="Loc">Món ăn</a>
                                 </li>
-                                <li class="nav-item dropdown">
+                                @*<li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="yummyDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
                                     <div class="dropdown-menu" aria-labelledby="yummyDropdown">
                                         <a class="dropdown-item" href="index.html">Main Meal</a>
                                         <a class="dropdown-item" href="archive.html">Snack Meal</a>
                                         <a class="dropdown-item" href="archive.html">Smoothies</a>
                                     </div>
-                                </li>
+                                </li>*@
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-controller="Introduce" asp-action="TipsTrick">Tips & Tricks</a>
+                                    <a class="nav-link" asp-controller="Introduce" asp-action="TipsTrick">Bài viết</a>
                                 </li>
-                                <li class="nav-item">
+                                @*<li class="nav-item">
                                     <a class="nav-link" href="contact.html">Contact</a>
-                                </li>
+                                </li>*@
                             </ul>
                         </div>
                     </nav>
@@ -141,13 +150,13 @@
                             <div class="collapse navbar-collapse justify-content-center" id="yummyfood-footer-nav">
                                 <ul class="navbar-nav">
                                     <li class="nav-item active">
-                                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                                        <a class="nav-link" href="#">Trang chủ <span class="sr-only">(current)</span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">About</a>
+                                        <a class="nav-link" href="#">Món ăn</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Contact</a>
+                                        <a class="nav-link" href="#">Bài viết</a>
                                     </li>
                                 </ul>
                             </div>

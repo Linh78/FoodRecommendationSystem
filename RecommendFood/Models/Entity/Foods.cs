@@ -24,6 +24,7 @@ namespace RecommendFood.Models.Entity
         public ICollection<Food_Ingredients> Food_Ingredients { get; set; }
         public virtual Categories Categorie { get; set; }
         public virtual BabyAge BabyAge { get; set; }
+        //public virtual ICollection<Comment> Comments { get; set; }
         public Foods() { }
     }
 }

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using NuGet.Packaging.Signing;
 using RecommendFood.Models.Dto;
 using RecommendFood.Models.Entity;
@@ -8,6 +10,11 @@ namespace RecommendFood.Controllers
     public class FoodController : Controller
     {
         FoodDBContext db = new FoodDBContext();
+        //private readonly UserManager<User> _userManager;
+        //public FoodController(UserManager<User> userManager)
+        //{
+        //    _userManager = userManager;
+        //}
         public IActionResult Index()
         {
             return View();
@@ -47,15 +54,7 @@ namespace RecommendFood.Controllers
                                   Quantity = foods.Quantity,
                                   Unit = foods.Unit,
                                   Category = foods.Categorie.Name,
-                                  //Category = foods.Categorie.Name (from f in db.Foods
-                                  //            join c in db.Categories
-                                  //            on f.Id_Category equals c.Id
-                                  //            select c.Name).FirstOrDefault(),
                                   BabyAge = foods.BabyAge.AgeGroup,
-                                  //BabyAge = (from f in db.Foods
-                                  //           join b in db.BabyAges
-                                  //           on f.Id_BabyAge equals b.Id
-                                  //           select b.AgeGroup).FirstOrDefault(),
                                   Energy = foods.Glucin * 4 + foods.Fat * 9 + foods.Protein
 
                               }).ToList();
@@ -86,9 +85,26 @@ namespace RecommendFood.Controllers
                                     Energy = Foods.Glucin * 4 + Foods.Fat * 9 + Foods.Protein
                                 }).FirstOrDefault();
                 var listRecipe = foodSelected.Recipe.Split(",");
-
             }
             return View(foodSelected);
         }
+        //[HttpPost]
+        //public IActionResult AddComment(int foodItemId, string content, int rating)
+        //{
+        //    var userId = _userManager.GetUserId(User); // Get the current user's ID
+        //    var comment = new Comment
+        //    {
+        //        CommentMsg = content,
+        //        Rate = rating,
+        //        Id_Food = foodItemId,
+        //        Id_User = userId,
+        //        CreatAt = DateTime.Now
+        //    };
+
+        //    db.Comments.Add(comment);
+        //    db.SaveChanges();
+
+        //    return RedirectToAction("Detail", new { id = foodItemId });
+        //}
     }
 }

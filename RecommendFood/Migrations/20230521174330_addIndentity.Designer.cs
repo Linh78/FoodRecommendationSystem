@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RecommendFood.Models.Entity;
 
@@ -11,9 +12,11 @@ using RecommendFood.Models.Entity;
 namespace RecommendFood.Migrations
 {
     [DbContext(typeof(FoodDBContext))]
-    partial class FoodDBContextModelSnapshot : ModelSnapshot
+    [Migration("20230521174330_addIndentity")]
+    partial class addIndentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -86,10 +89,6 @@ namespace RecommendFood.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -141,10 +140,6 @@ namespace RecommendFood.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
-
-                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -347,41 +342,6 @@ namespace RecommendFood.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("RecommendFood.Models.Entity.Comment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("CommentMsg")
-                        .IsRequired()
-                        .HasColumnType("Nvarchar(max)")
-                        .HasColumnName("CommentMsg");
-
-                    b.Property<DateTime>("CreatAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Id_Food")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Id_User")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("Rate")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Id_Food");
-
-                    b.HasIndex("Id_User");
-
-                    b.ToTable("Comments");
-                });
-
             modelBuilder.Entity("RecommendFood.Models.Entity.Food_Ingredients", b =>
                 {
                     b.Property<int>("Id_Food")
@@ -520,13 +480,6 @@ namespace RecommendFood.Migrations
                     b.ToTable("News");
                 });
 
-            modelBuilder.Entity("RecommendFood.Models.Entity.User", b =>
-                {
-                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
-
-                    b.HasDiscriminator().HasValue("User");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -576,27 +529,6 @@ namespace RecommendFood.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("RecommendFood.Models.Entity.Comment", b =>
-                {
-                    b.HasOne("RecommendFood.Models.Entity.Foods", "Foods")
-                        .WithMany("Comments")
-                        .HasForeignKey("Id_Food")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_Comment_Foods");
-
-                    b.HasOne("RecommendFood.Models.Entity.User", "User")
-                        .WithMany("Comments")
-                        .HasForeignKey("Id_User")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_Comment_User");
-
-                    b.Navigation("Foods");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("RecommendFood.Models.Entity.Food_Ingredients", b =>
@@ -651,19 +583,12 @@ namespace RecommendFood.Migrations
 
             modelBuilder.Entity("RecommendFood.Models.Entity.Foods", b =>
                 {
-                    b.Navigation("Comments");
-
                     b.Navigation("Food_Ingredients");
                 });
 
             modelBuilder.Entity("RecommendFood.Models.Entity.Ingredient", b =>
                 {
                     b.Navigation("Food_Ingredients");
-                });
-
-            modelBuilder.Entity("RecommendFood.Models.Entity.User", b =>
-                {
-                    b.Navigation("Comments");
                 });
 #pragma warning restore 612, 618
         }
