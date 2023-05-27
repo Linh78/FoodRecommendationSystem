@@ -15,12 +15,17 @@ namespace RecommendFood.Controllers
         {
             BabyAge babyAge = new BabyAge();
             ViewBag.AgeGroup = new SelectList(db.BabyAges.ToList(), "Id", "AgeGroup"); 
+            //ViewBag.AgeGroup = new SelectList(db.BabyAges.ToList(), "Id", "AgeGroup");
             return View(babyAge);
         }
         [HttpPost]
         public ActionResult Recommend()
         {
             ViewBag.Name = Request.Form["Name"];
+            ViewBag.AgeGroup = (from b in db.Categories 
+                                where b.Id == Convert.ToInt32(Request.Form["AgeGroup"])
+                                select b.Name
+                                ).FirstOrDefault();
             int category = 4;
             //BabyAge ageGroup = new BabyAge();
             var rs = new RecommendSystem.RecommendSystem();

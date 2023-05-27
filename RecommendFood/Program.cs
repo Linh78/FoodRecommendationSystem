@@ -6,7 +6,7 @@ var connectionString = builder.Configuration.GetConnectionString("DatabaseInfor"
 //builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<FoodDBContext>(options => options.UseSqlServer(connectionString));
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<FoodDBContext>().AddDefaultTokenProviders();
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<FoodDBContext>().AddDefaultTokenProviders();
 //builder.Services.AddIdentity<User, IdentityRole>();
 //builder.Services.AddScoped<UserManager<User>>();
 // Add services to the container.

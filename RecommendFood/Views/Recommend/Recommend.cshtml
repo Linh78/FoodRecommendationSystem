@@ -63,10 +63,10 @@
     </div>
     <section class="food_section section_padding_80">
         <div class="container">
-            <div class="infor">
-                <p>
-                    Bé @ViewBag.Name 
-                </p>
+            <div class="bradcumb-title text-center">
+                <h3 style="font-family: 'Dancing Script'; color: orange; font-weight: bolder; font-size: 60px">
+                    Menu dành cho Bé @ViewBag.Name !!
+                </h3>
             </div>
             <div class="filters-content">
                 <div class="row grid">
@@ -91,8 +91,8 @@
                                             <h6 style="color:white">
                                                 @item.Energy Kcal
                                             </h6>
-                                            <a asp-action="Detail" asp-controller="Food" asp-route-id="@item.Id" style="font-size: 0.8em; color: white">
-                                                More
+                                            <a id="more" asp-action="Detail" asp-controller="Food" asp-route-id="@item.Id" style="font-size: 0.8em; color: white">
+                                                Tiếp
                                             </a>
                                         </div>
                                     </div>
@@ -112,7 +112,20 @@
             </div>
         </div>
     </section>
-
+   @* <script>
+        //$('#more').on('click', function(){
+        //    alert('Xin chào');
+        //});
+        document.getElementById('more').addEventListener('click', function () {
+            alert('Xin chào! Đây là thông báo.');
+        });
+    </script>*@
+   
+    <script>
+        document.getElementById('more').addEventListener('click', function(){
+            alert('Hello world!!');
+        })
+    </script>
     <!-- end food section -->
     <!-- footer section -->
     <!-- jQery -->
